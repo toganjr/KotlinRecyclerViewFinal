@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="3dp"
+    android:background="@color/white"
+    >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/img_avatar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_avatar"
+        tools:text="@tools:sample/lorem/random" />
+
+    <ImageView
+        android:id="@+id/img_verified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="@id/tv_name"
+        app:layout_constraintLeft_toRightOf="@id/tv_name"
+
+        android:src="@drawable/ic_baseline_verified_user_24"
+        />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/img_avatar"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="@tools:sample/lorem" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="205dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="115dp" />
+
+    <TextView
+        android:id="@+id/tv_repository"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/repository"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintBottom_toBottomOf="@id/img_avatar"/>
+
+    <TextView
+        android:id="@+id/tv_numb_of_repository"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/number_of"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/tv_repository"
+        app:layout_constraintBottom_toBottomOf="@id/tv_repository"
+        app:layout_constraintStart_toEndOf="@id/tv_repository"/>
+
+    <TextView
+        android:id="@+id/tv_follower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/follower"
+        android:textSize="12sp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@id/tv_numb_of_repository"
+        app:layout_constraintTop_toTopOf="@id/tv_numb_of_repository"
+        app:layout_constraintBottom_toBottomOf="@id/tv_numb_of_repository"/>
+
+    <TextView
+        android:id="@+id/tv_numb_of_follower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/number_of"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/tv_follower"
+        app:layout_constraintTop_toTopOf="@id/tv_follower"
+        app:layout_constraintBottom_toBottomOf="@id/tv_follower"/>
+
+    <TextView
+        android:id="@+id/tv_following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/following"
+        android:textSize="12sp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@id/tv_numb_of_follower"
+        app:layout_constraintTop_toTopOf="@id/tv_numb_of_follower"
+        app:layout_constraintBottom_toBottomOf="@id/tv_numb_of_follower"/>
+
+    <TextView
+        android:id="@+id/tv_numb_of_following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/number_of"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/tv_following"
+        app:layout_constraintTop_toTopOf="@id/tv_following"
+        app:layout_constraintBottom_toBottomOf="@id/tv_following"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
