@@ -51,3 +51,4 @@ class DetailUser: AppCompatActivity() {
 
     }
 }
+

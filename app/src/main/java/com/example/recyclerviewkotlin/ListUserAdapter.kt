@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewkotlin.databinding.CardviewUserBinding
@@ -18,20 +15,21 @@ import com.example.recyclerviewkotlin.databinding.CardviewUserSpecialBinding
 import com.example.recyclerviewkotlin.ListUserAdapter as ListUserAdapter1
 
 
-class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemClick: (User) -> Unit, private val onNameClick: (String) -> Unit) : RecyclerView.Adapter<ArtistViewHolder>() {
+class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemClick: (User) -> Unit, private val onNameClick: (String) -> Unit) : RecyclerView.Adapter<AdvancedViewHolder>() {
 
-    private lateinit var binding: CardviewUserBinding
-    private lateinit var bindingSpecial: CardviewUserSpecialBinding
+    lateinit var binding: CardviewUserBinding
+    lateinit var bindingSpecial: CardviewUserSpecialBinding
 
-    var data: List<User> = ArrayList(0)
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+//    var data: List<User> = ArrayList(0)
+//        set(value) {
+//            field = value
+//            notifyDataSetChanged()
+//        }
 
+    // Code for using Interface
 //    lateinit var onItemClickCallback: OnItemClickCallback
-    lateinit var position: Any
 
+    // Code for using Interface
 //    fun setOnItemClickCallback(onItemClickCallback:OnItemClickCallback){
 //        this.onItemClickCallback = onItemClickCallback
 //    }
@@ -45,30 +43,40 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
-        binding = CardviewUserBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        bindingSpecial = CardviewUserSpecialBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdvancedViewHolder {
+        binding = CardviewUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        bindingSpecial =
+            CardviewUserSpecialBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return if (viewType == 0) {
-            ArtistViewHolder(bindingSpecial.root){
+            // Code for Higher Order Function with Listener called in onCreateViewHolder with Binding
+            AdvancedViewHolder(bindingSpecial.root,bindingSpecial.tvName,listUser,onNameClick) {
                 onItemClick(listUser[it])
             }
+
+            // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
 //            ListViewHolder(bindingSpecial.root)
+
+            // Code when not using Binding
 //            val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cardview_user_special,parent,false)
 //            ListViewHolder(view)
 
         } else {
-            ArtistViewHolder(binding.root){
+            // Code for Higher Order Function with Listener called in onCreateViewHolder with Binding
+            AdvancedViewHolder(binding.root,binding.tvName,listUser,onNameClick){
                 onItemClick(listUser[it])
+            }
+
+            // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
 //            ListViewHolder(binding.root)
+
+            // Code when not using Binding
 //            val view: View = LayoutInflater.from(parent.context).inflate(R.layout.cardview_user,parent,false)
 //            ListViewHolder(view)
-            }
         }
     }
 
-
-    override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdvancedViewHolder, position: Int) {
         val (username, name, avatar, company, location, repository, follower, following, verified) = listUser[position]
         if (!verified) {
 
@@ -78,16 +86,27 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
             binding.tvNumbOfFollower.text = follower
             binding.tvNumbOfFollowing.text = following
 
+            // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
 //            binding.tvName.setOnClickListener {
-////              onItemClickCallback.onNameClicked(listUser[holder.adapterPosition])
 //                onNameClick(listUser[position].name)
 //            }
-//
-//            binding.root.setOnClickListener {
-////                onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+
+            // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
+//          binding.root.setOnClickListener {
 //                onItemClick(listUser[position])
 //            }
 
+            // Code for using Interface
+//            binding.tvName.setOnClickListener {
+//                onItemClickCallback.onNameClicked(listUser[holder.adapterPosition])
+//            }
+
+            // Code for using Interface
+//            binding.root.setOnClickListener {
+//                onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+//            }
+
+            // Code for using traditional way
 //            binding.root.setOnClickListener { view ->
 //                val intent = Intent(view.context,DetailUser::class.java)
 //                intent.putExtra("name",name)
@@ -105,19 +124,29 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
             bindingSpecial.tvNumbOfFollower.text = follower
             bindingSpecial.tvNumbOfFollowing.text = following
 
+            // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
 //            bindingSpecial.tvName.setOnClickListener {
-////                onItemClickCallback.onNameClicked(listUser[holder.adapterPosition])
 //                onNameClick(listUser[position].name)
 //            }
-//
+
+            // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
 //            bindingSpecial.root.setOnClickListener {
-//                // onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
 //                onItemClick(listUser[position])
 //            }
 
+            // Code for using Interface
+//            bindingSpecial.tvName.setOnClickListener {
+//                onItemClickCallback.onNameClicked(listUser[holder.adapterPosition])
+//            }
+
+            // Code for using Interface
+//            bindingSpecial.root.setOnClickListener {
+//                onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+//            }
+
+            // Code for calling OnClickListener in Adapter ( traditional way ====OLD==== )
 //            bindingSpecial.root.setOnClickListener { view ->
 //                val intent = Intent(view.context,DetailUser::class.java)
-//                intent.putExtra("image",avatar)
 //                intent.putExtra("name",name)
 //                intent.putExtra("username",username)
 //                intent.putExtra("repository",repository)
@@ -127,14 +156,15 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
 //            }
         }
 
-
+            // Code when not using Binding
 //        holder.tvUsername.text = username
 //        holder.tvName.text = name
 //        holder.imgAvatar?.setImageResource(avatar)
 //        holder.tvRepository.text = repository
 //        holder.tvFollower.text = follower
 //        holder.tvFollowing.text = following
-//
+
+            // Code when not using Binding
 //        holder.itemView.setOnClickListener { view ->
 //            val intent = Intent(view.context,DetailUser::class.java)
 //            if(Integer.valueOf(follower) > 4000) intent.putExtra("image",avatar)
@@ -146,11 +176,15 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
 //            startActivity(view.context,intent,null)
 //        }
 
-//            holder.itemView.setOnClickListener{onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])}
+        // Code when using Interface without Binding
+//        holder.itemView.setOnClickListener{onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])}
     }
 
     override fun getItemCount(): Int = listUser.size
 
+}
+
+        // Code for Higher Order Function with Binding and other traditional ways but Calling OnClickListener inside OnBindViewHolder
 //    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        var imgAvatar: ImageView? = itemView.findViewById(R.id.img_avatar)
 //        var tvName: TextView = itemView.findViewById(R.id.tv_name)
@@ -160,12 +194,11 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
 //        var tvFollowing: TextView = itemView.findViewById(R.id.tv_numb_of_following)
 //    }
 
-
+//      Code for using Interface
 //    interface OnItemClickCallback{
 //        fun onItemClicked(data: User)
 //        fun onNameClicked(data: String)
 //    }
-}
 
 
 
