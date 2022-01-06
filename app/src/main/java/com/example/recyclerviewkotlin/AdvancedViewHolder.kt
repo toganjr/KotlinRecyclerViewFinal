@@ -9,14 +9,14 @@ import com.example.recyclerviewkotlin.databinding.CardviewUserSpecialBinding
 
 
 // Code for Higher Order Function with Listener called in onCreateViewHolder with Binding
-class AdvancedViewHolder(view: View, viewName: View, listUser: ArrayList<User>, onNameClicked: (String) -> Unit, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
+class AdvancedViewHolder(view: View, viewName: View, onNameClicked: (String) -> Unit, onItemClicked: (User) -> Unit, retrieveUser: (Int) -> User) : RecyclerView.ViewHolder(view) {
 
     init {
         itemView.setOnClickListener {
-            onItemClicked(adapterPosition)
+            onItemClicked(retrieveUser(adapterPosition))
         }
         viewName.setOnClickListener{
-            onNameClicked(listUser[adapterPosition].name)
+            onNameClicked(retrieveUser(adapterPosition).name)
         }
     }
 
