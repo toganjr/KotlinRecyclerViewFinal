@@ -68,7 +68,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
 
         } else {
             // Code for Higher Order Function with Listener called in onCreateViewHolder with Binding
-            AdvancedViewHolder(binding.root,bindingSpecial.tvName,onNameClick,onItemClick) {
+            AdvancedViewHolder(binding.root,binding.tvName,onNameClick,onItemClick) {
                 sendListUser(it,listUser)
             }
 
