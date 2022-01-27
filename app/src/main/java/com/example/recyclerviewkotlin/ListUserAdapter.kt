@@ -35,7 +35,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
 //    }
 
     // Code to improve performance by reducing memory usage by sending Object instead of ArrayList
-    private fun sendListUser(pos: Int, listUser: ArrayList<User>) : User{
+    private fun sendListUser(pos: Int) : User{
         return listUser[pos]
     }
 
@@ -56,7 +56,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
         return if (viewType == 0) {
             // Code for Higher Order Function with Listener called in onCreateViewHolder with Binding
             AdvancedViewHolder(bindingSpecial.root,bindingSpecial.tvName,onNameClick,onItemClick) {
-                sendListUser(it,listUser)
+                sendListUser(it)
             }
 
             // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
@@ -69,7 +69,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>, private val onItemC
         } else {
             // Code for Higher Order Function with Listener called in onCreateViewHolder with Binding
             AdvancedViewHolder(binding.root,binding.tvName,onNameClick,onItemClick) {
-                sendListUser(it,listUser)
+                sendListUser(it)
             }
 
             // Code for Higher Order Function with Binding but Calling OnClickListener inside OnBindViewHolder
