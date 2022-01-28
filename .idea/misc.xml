@@ -15,7 +15,8 @@
         <entry key="..\:/Users/TOGAN/AndroidStudioProjects/RecyclerViewKotlin2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.10625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/cardview_user.xml" value="0.10625" />
+        <entry key="app/src/main/res/layout/cardview_user.xml" value="0.44971259980453177" />
+        <entry key="app/src/main/res/layout/cardview_user_special.xml" value="0.10260416666666666" />
       </map>
     </option>
   </component>
